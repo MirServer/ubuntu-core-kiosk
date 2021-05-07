@@ -96,3 +96,16 @@ parts:
   scripts:
     plugin: dump
     source: scripts
+    override-build: |
+      snapcraftctl build
+      sed s/\$\{SNAPCRAFT_ARCH_TRIPLET}/${SNAPCRAFT_ARCH_TRIPLET}/g --in-place $SNAPCRAFT_PART_INSTALL/bin/swaybg.launcher
+
+  inotify-tools:
+    plugin: nil
+    stage-packages:
+      - inotify-tools
+
+  swaybg:
+    plugin: nil
+    stage-packages:
+      - swaybg

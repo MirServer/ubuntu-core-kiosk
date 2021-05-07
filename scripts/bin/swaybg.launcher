@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+real_xdg_runtime_dir=$(dirname "${XDG_RUNTIME_DIR}")
+real_wayland=${real_xdg_runtime_dir}/${WAYLAND_DISPLAY:-wayland-0}
+
+mkdir -p "$XDG_RUNTIME_DIR" -m 700
+sleep 1
+if [ ! -O "${real_wayland}" ]; then
+  echo waiting for Wayland socket...
+  until [ -O "${real_wayland}" ]
+  do
+    inotifywait --event create $(dirname "${real_wayland}") || sleep 4
+  done
+
+  echo ...waiting done
+fi
+
+ln -sf "${real_wayland}" "$XDG_RUNTIME_DIR"
+ln -sf "${real_wayland}.lock" "$XDG_RUNTIME_DIR"
+
+# The snapped swaybg uses Wayland everywhere
+GDK_BACKEND=wayland exec "${SNAP}/usr/bin/swaybg" -c "#1f1f1f"
