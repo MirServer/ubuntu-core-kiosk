@@ -10,4 +10,4 @@ mkdir -p "$XDG_RUNTIME_DIR" -m 700
 ln -sf "${real_wayland}" "$XDG_RUNTIME_DIR"
 ln -sf "${real_wayland}.lock" "$XDG_RUNTIME_DIR"
 
-exec "${SNAP}/usr/bin/swaybg" -c "#1f1f1f"
+exec "${SNAP}/usr/bin/swaybg" "$@"

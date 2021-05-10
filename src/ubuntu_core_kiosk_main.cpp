@@ -46,9 +46,11 @@ int main(int argc, char const* argv[])
 
     ExternalClientLauncher launcher;
 
+    auto background = "#1f1f1f"s;
+
     auto startup_background = [&](std::string const& swaybg_launch_path)
         {
-            launcher.launch({swaybg_launch_path});
+            launcher.launch({swaybg_launch_path, "-c", background});
         };
 
     auto const default_swaybg_launch_path = []
@@ -66,7 +68,8 @@ int main(int argc, char const* argv[])
             display_config.layout_option(),
             set_window_management_policy<KioskWindowManagerPolicy>(),
             launcher,
-            CommandLineOption{startup_background, "swaybg-launch", "Path to background launch script", default_swaybg_launch_path()},
+            CommandLineOption{[&](auto& option) { background = option; }, "bgcolor", "RGB color of background", background},
+            CommandLineOption{startup_background, "bglaunch", "Path to background launch script", default_swaybg_launch_path()},
             Keymap{}
         });
 }
