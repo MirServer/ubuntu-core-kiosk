@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016-2020 Canonical Ltd.
+ * Copyright © 2016-2021 Canonical Ltd.
  *
  * This program is free software: you can redistribute it and/or modify
  * under the terms of the GNU General Public License version 2 or 3 as
@@ -20,6 +20,7 @@
 
 #include <miral/command_line_option.h>
 #include <miral/display_configuration.h>
+#include <miral/external_client.h>
 #include <miral/keymap.h>
 #include <miral/runner.h>
 #include <miral/set_window_management_policy.h>
@@ -28,18 +29,44 @@
 int main(int argc, char const* argv[])
 {
     using namespace miral;
+    using namespace std::string_literals;
+
     MirRunner runner{argc, argv};
 
     DisplayConfiguration display_config{runner};
-    WaylandExtensions extensions;
-    extensions.enable(WaylandExtensions::zwlr_layer_shell_v1);
+    WaylandExtensions wayland_extensions;
+
+    for (auto const& extension : {
+        WaylandExtensions::zwlr_layer_shell_v1, // For swaybg
+        "zwp_pointer_constraints_v1",           // Useful for games
+        "zwp_relative_pointer_manager_v1"})     // Useful for games
+    {
+        wayland_extensions.enable(extension);
+    }
+
+    ExternalClientLauncher launcher;
+
+    auto startup_background = [&](std::string const& swaybg_launch_path)
+        {
+            launcher.launch({swaybg_launch_path});
+        };
+
+    auto const default_swaybg_launch_path = []
+        {
+            if (auto const snap = getenv("SNAP"))
+                return snap + "/bin/swaybg.launcher"s;
+            else
+                return "scripts/bin/swaybg.launcher"s;
+        };
 
     return runner.run_with(
         {
-            extensions,
+            wayland_extensions,
             display_config,
             display_config.layout_option(),
             set_window_management_policy<KioskWindowManagerPolicy>(),
+            launcher,
+            CommandLineOption{startup_background, "swaybg-launch", "Path to background launch script", default_swaybg_launch_path()},
             Keymap{}
         });
 }
