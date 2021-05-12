@@ -59,7 +59,7 @@ int main(int argc, char const* argv[])
                 return snap + "/bin/swaybg.launcher"s;
             else
                 return "scripts/bin/swaybg.launcher"s;
-        };
+        }();
 
     return runner.run_with(
         {
@@ -69,7 +69,7 @@ int main(int argc, char const* argv[])
             set_window_management_policy<KioskWindowManagerPolicy>(),
             launcher,
             CommandLineOption{[&](auto& option) { background = option; }, "bgcolor", "RGB color of background", background},
-            CommandLineOption{startup_background, "bglaunch", "Path to background launch script", default_swaybg_launch_path()},
+            CommandLineOption{startup_background, "bglaunch", "Path to background launch script", default_swaybg_launch_path},
             Keymap{}
         });
 }
