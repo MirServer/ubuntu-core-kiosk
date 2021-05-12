@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eux
 
 XDG_RUNTIME_DIR=$(dirname "$XDG_RUNTIME_DIR")
 export XDG_RUNTIME_DIR
