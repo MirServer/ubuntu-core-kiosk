@@ -51,7 +51,7 @@ if grep -q snap_core= /proc/cmdline && grep -q vt.handoff= /proc/cmdline
 then
   cat <<EOT >> "${config_temp}"
 
-# WORKAROUND: If 'vt.handoff' is set, Mir can only start with vt=0.
+# WORKAROUND: On Ubuntu Core, if 'vt.handoff' is set, Mir can only start with vt=0.
 # The correct fix is: https://github.com/snapcore/pi-gadget/pull/12
 vt=0
 EOT
