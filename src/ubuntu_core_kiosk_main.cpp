@@ -26,10 +26,22 @@
 #include <miral/set_window_management_policy.h>
 #include <miral/wayland_extensions.h>
 
+using namespace std::string_literals;
+
+namespace
+{
+auto default_swaybg_launch_path()
+{
+    if (auto const snap = getenv("SNAP"))
+        return snap + "/bin/swaybg.launcher"s;
+    else
+        return "scripts/bin/swaybg.launcher"s;
+    };
+}
+
 int main(int argc, char const* argv[])
 {
     using namespace miral;
-    using namespace std::string_literals;
 
     MirRunner runner{argc, argv};
 
@@ -53,14 +65,6 @@ int main(int argc, char const* argv[])
             launcher.launch({swaybg_launch_path, "-c", background});
         };
 
-    auto const default_swaybg_launch_path = []
-        {
-            if (auto const snap = getenv("SNAP"))
-                return snap + "/bin/swaybg.launcher"s;
-            else
-                return "scripts/bin/swaybg.launcher"s;
-        }();
-
     return runner.run_with(
         {
             wayland_extensions,
@@ -69,7 +73,7 @@ int main(int argc, char const* argv[])
             set_window_management_policy<KioskWindowManagerPolicy>(),
             launcher,
             CommandLineOption{[&](auto& option) { background = option; }, "bgcolor", "RGB color of background", background},
-            CommandLineOption{startup_background, "bglaunch", "Path to background launch script", default_swaybg_launch_path},
+            CommandLineOption{startup_background, "bglaunch", "Path to background launch script", default_swaybg_launch_path()},
             Keymap{}
         });
 }
