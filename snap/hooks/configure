@@ -47,16 +47,19 @@ EOT
   fi
 }
 
-# If 'vt.handoff' is set, Mir only starts first time on the default VT. (#779)
-# Until we understand and fix properly, set the config the way that works.
-if ! grep -q snap_core= /proc/cmdline || ! grep -q vt.handoff= /proc/cmdline
-then vt=4
-else vt=0
+if grep -q snap_core= /proc/cmdline && grep -q vt.handoff= /proc/cmdline
+then
+  cat <<EOT >> "${config_temp}"
+
+# WORKAROUND: If 'vt.handoff' is set, Mir can only start with vt=0.
+# The correct fix is: https://github.com/snapcore/pi-gadget/pull/12
+vt=0
+EOT
 fi
 
 # Fill in defaults for any options not already supplied
 config_entry "console-provider"   "vt"                                  "Required to run as daemon"
-config_entry "vt"                 "${vt}"                               "Virtual terminal to use for display (0 to use current)"
+config_entry "vt"                 "4"                                   "Virtual terminal to use for display (0 to use current)"
 config_entry "cursor"             "auto"                                "Mouse pointer to use (auto|none|software)"
 config_entry "env-hacks"          "MIR_MESA_KMS_DISABLE_MODESET_PROBE"  "As kiosk HAS to run mesa-kms we can safely override the probe for KMS everywhere"
 
