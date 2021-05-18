@@ -80,6 +80,16 @@ parts:
       - libmiral-dev
     stage-packages:
       - libmiral4
+    prime:
+      - -usr/doc
+      - -usr/doc-base
+      - -usr/share/bug
+      - -usr/share/doc
+      - -usr/share/doc-base
+      - -usr/share/libdrm
+      - -usr/share/lintian
+      - -usr/share/man
+      - -usr/share/pkgconfig
 
   platform:
     after: [ppa-setup]
@@ -88,10 +98,15 @@ parts:
       - mir-platform-graphics-gbm-kms
       - mir-platform-graphics-x
       - libgl1-mesa-dri
+    prime:
+      - -lib/udev
+      - -usr/share
 
   icons:
     plugin: nil
     stage-packages: [dmz-cursor-theme]
+    prime:
+      - -usr/share/doc
 
   scripts:
     plugin: dump
@@ -101,3 +116,5 @@ parts:
     plugin: nil
     stage-packages:
       - swaybg
+    prime:
+      - -usr/share
