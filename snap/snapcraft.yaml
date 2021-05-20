@@ -48,11 +48,11 @@ plugs:
   egl-libs-core20:
     interface: content
     target: $SNAP/egllibs
-    default-provider: mesa-core20
+    default-provider: mesa-core20/edge
   egl-dri-core20:
     interface: content
     target: $SNAP/egldri
-    default-provider: mesa-core20
+    default-provider: mesa-core20/edge
 
 parts:
   recipe-version:
