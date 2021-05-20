@@ -15,8 +15,9 @@ environment:
   # Prep for Mir
   MIR_CLIENT_PLATFORM_PATH: ${SNAP}/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/mir/client-platform
   MIR_SERVER_PLATFORM_PATH: ${SNAP}/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/mir/server-platform
-  # Prep EGL
-  LIBGL_DRIVERS_PATH: ${SNAP}/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/dri
+  # Setup EGL from the plugs
+  LD_LIBRARY_PATH: ${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}:$SNAP/egl/lib
+  LIBGL_DRIVERS_PATH: $SNAP/egl/dri
 
 layout:
   /usr/share:
@@ -44,6 +45,10 @@ slots:
 
 plugs:
   opengl:
+  egl-core20:
+    interface: content
+    target: $SNAP/egl
+    default-provider: mesa-core20/edge
 
 parts:
   recipe-version:
