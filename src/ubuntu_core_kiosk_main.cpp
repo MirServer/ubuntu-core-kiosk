@@ -17,9 +17,11 @@
  */
 
 #include "kiosk_window_manager.h"
+#include "egwallpaper.h"
 
 #include <miral/command_line_option.h>
 #include <miral/display_configuration.h>
+#include <miral/internal_client.h>
 #include <miral/keymap.h>
 #include <miral/runner.h>
 #include <miral/set_window_management_policy.h>
@@ -30,11 +32,19 @@ int main(int argc, char const* argv[])
     MirRunner runner{argc, argv};
 
     DisplayConfiguration display_config{runner};
- 
+
+    egmde::Wallpaper wallpaper;
+    runner.add_stop_callback([&] { wallpaper.stop(); });
+
     return runner.run_with(
         {
             display_config,
             display_config.layout_option(),
+            CommandLineOption{[&](auto& option) { wallpaper.top(option);},
+                              "wallpaper-top",    "Colour of wallpaper RGB", "0x7f7f7f"},
+            CommandLineOption{[&](auto& option) { wallpaper.bottom(option);},
+                              "wallpaper-bottom", "Colour of wallpaper RGB", "0x1f1f1f"},
+            StartupInternalClient{std::ref(wallpaper)},
             set_window_management_policy<KioskWindowManagerPolicy>(),
             Keymap{}
         });
