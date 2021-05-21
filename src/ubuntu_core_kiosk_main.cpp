@@ -25,6 +25,7 @@
 #include <miral/keymap.h>
 #include <miral/runner.h>
 #include <miral/set_window_management_policy.h>
+#include <miral/wayland_extensions.h>
 
 int main(int argc, char const* argv[])
 {
@@ -32,12 +33,14 @@ int main(int argc, char const* argv[])
     MirRunner runner{argc, argv};
 
     DisplayConfiguration display_config{runner};
+    WaylandExtensions wayland_extensions;
 
     egmde::Wallpaper wallpaper;
     runner.add_stop_callback([&] { wallpaper.stop(); });
 
     return runner.run_with(
         {
+            wayland_extensions,
             display_config,
             display_config.layout_option(),
             CommandLineOption{[&](auto& option) { wallpaper.top(option);},
