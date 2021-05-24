@@ -289,9 +289,6 @@ defaults:
 
 ## Further reading
 
-These references currently refer to `mir-kiosk` but you can use `ubuntu-core-kiosk` instead.
-
-
 These references for building kiosk snaps currently refer to `mir-kiosk` but you can use `ubuntu-core-kiosk` instead. 
 
 * [Make a secure Ubuntu kiosk](https://ubuntu.com/tutorials/secure-ubuntu-kiosk)
