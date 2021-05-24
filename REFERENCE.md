@@ -296,3 +296,5 @@ These references for building kiosk snaps currently refer to `mir-kiosk` but you
 * [Make a X11-based Kiosk Snap](https://ubuntu.com/tutorials/x11-kiosk)
 * [Make a HTML5/Electron-based Kiosk Snap](https://ubuntu.com/tutorials/electron-kiosk)
 * [HOWTO: Run your kiosk snap on your desktop](https://discourse.ubuntu.com/t/howto-run-your-kiosk-snap-on-your-desktop/)
+
+For a discussion of running `ubuntu-core-kiosk` in a desktop development environment see: [RUNNING_ON_YOUR_DESKTOP.md](RUNNING_ON_YOUR_DESKTOP.md)
