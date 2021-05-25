@@ -278,12 +278,14 @@ defaults:
 
 ## Further reading
 
-These references for building kiosk snaps currently refer to `mir-kiosk` but you can use `ubuntu-core-kiosk` instead. 
+Developers working with Ubuntu Core Kiosk may also find the following useful:
+
+* [RUNNING_IN_A_VM.md](RUNNING_IN_A_VM.md)
+* [RUNNING_ON_YOUR_DESKTOP.md](RUNNING_ON_YOUR_DESKTOP.md)
+  
+The following tutorials for building kiosk snaps currently refer to `mir-kiosk` but you can use `ubuntu-core-kiosk` instead as it is a more flexible replacement. 
 
 * [Make a secure Ubuntu kiosk](https://ubuntu.com/tutorials/secure-ubuntu-kiosk)
 * [Make a Wayland-native Kiosk snap](https://ubuntu.com/tutorials/wayland-kiosk)
 * [Make a X11-based Kiosk Snap](https://ubuntu.com/tutorials/x11-kiosk)
 * [Make a HTML5/Electron-based Kiosk Snap](https://ubuntu.com/tutorials/electron-kiosk)
-* [HOWTO: Run your kiosk snap on your desktop](https://discourse.ubuntu.com/t/howto-run-your-kiosk-snap-on-your-desktop/)
-
-For a discussion of running `ubuntu-core-kiosk` in a desktop development environment see: [RUNNING_ON_YOUR_DESKTOP.md](RUNNING_ON_YOUR_DESKTOP.md)
