@@ -1,6 +1,6 @@
 # Ubuntu Core Kiosk
 
-**Disclaimer:** *This isn't about how to deploy on "Classic" linux systems (i.e. not "Ubuntu Core") such as Ubuntu Desktop or Ubuntu Server. For these systems see the `daemon` configuration option in [REFERENCE.md](REFERENCE.md)*
+**Disclaimer:** *This isn't about how to deploy on "Classic" linux systems such as Ubuntu Desktop or Ubuntu Server. For these systems see the `daemon` configuration option in [REFERENCE.md](REFERENCE.md)*
 
 ## Running on your desktop
 
