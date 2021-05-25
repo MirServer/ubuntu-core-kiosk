@@ -78,17 +78,6 @@ A full list of the current configuration options supported by `ubuntu-core-kiosk
 
 ```bash
 $ ubuntu-core-kiosk --help
-+ mkdir -p /home/alan/snap/ubuntu-core-kiosk/117/.config/
-+ grep -vE (^vt=|^console-provider=vt|^display-layout=) /var/snap/ubuntu-core-kiosk/117/ubuntu_core_kiosk.config
-+ exec /snap/ubuntu-core-kiosk/117/bin/run-kiosk /snap/ubuntu-core-kiosk/117/usr/local/bin/ubuntu_core_kiosk --help
-+ dirname /run/user/1000/snap.ubuntu-core-kiosk
-+ XDG_RUNTIME_DIR=/run/user/1000
-+ export XDG_RUNTIME_DIR
-+ mkdir -p /run/user/1000 -m 700
-+ [ -n wayland-0 ]
-+ [ -e /run/user/1000/wayland-0 ]
-+ unset WAYLAND_DISPLAY
-+ exec /snap/ubuntu-core-kiosk/117/usr/local/bin/ubuntu_core_kiosk --help
 usage: /snap/ubuntu-core-kiosk/117/usr/local/bin/ubuntu_core_kiosk [options]
 
 Command-line options (e.g. "--host-socket=/tmp/mir_socket").
