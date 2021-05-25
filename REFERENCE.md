@@ -198,7 +198,7 @@ user options:
   -h [ --help ]                         this help text
 ```
 
-You might notice that the options are described as "command-line options", and they can be supplied that way when running the snap from the command-line (and not as a daemon). That can be a convenient way of testing their effect. 
+You might notice that the options are described as "command-line options", and they can be supplied that way when running the snap from the command-line (and not as a daemon). That can be a convenient way of testing their effect. (See [RUNNING_ON_YOUR_DESKTOP.md](RUNNING_ON_YOUR_DESKTOP.md)) for an example. 
 
 ### The `kiosk-display` snap configuration option
 

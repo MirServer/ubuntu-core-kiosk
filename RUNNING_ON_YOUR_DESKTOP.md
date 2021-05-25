@@ -32,6 +32,11 @@ You can connect any Wayland supporting application (for example, one you are dev
 $ WAYLAND_DISPLAY=wayland-1 glmark2-wayland
 ```
 
+You can supply also configuration options (see [REFERENCE.md](REFERENCE.md)) on the commandline. For example, for testing multiple displays:
+```bash
+ubuntu-core-kiosk --x11-output 800x600:800x600
+```
+
 ### Running as root
 
 This will create a "Mir on X" window on your desktop and a Wayland socket that root processes (such as `daemons`) can connect to. This is useful for testing the snap packaging of applications you plan to use with `ubuntu-core-kiosk`.
