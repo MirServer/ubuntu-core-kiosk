@@ -212,7 +212,7 @@ One of the options in `kiosk-config` is:
                                         $XDG_CONFIG_DIRS)
 ```
 
-But unless `kiosk-display` is set, there is no such file. The contents of this file describe the graphics cards and outputs on the system and, as such, vary between systems. You can get a template for your system by running `ubuntu-core-kiosk` and checking for an `ubuntu_core_kiosk.display` file. For example:
+The contents of this file describe the graphics cards and outputs on the system and, as such, vary between systems. You can get a template for your system by running `ubuntu-core-kiosk` and checking for an `ubuntu_core_kiosk.display` file. For example:
 ```bash
 $ cat /var/snap/ubuntu-core-kiosk/current/ubuntu_core_kiosk.display
 layouts:
