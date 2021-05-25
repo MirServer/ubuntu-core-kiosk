@@ -62,6 +62,15 @@ vt=0
 EOT
 fi
 
+if [ -e "$SNAP/graphics/lib/libPVROCL.so" ]
+then
+  cat <<EOT >> "${config_temp}"
+
+# Quirk required by MTK drivers
+driver-quirks=skip:driver:pvrsrvkm
+EOT
+fi
+
 # Fill in defaults for any options not already supplied
 config_entry "console-provider"   "vt"                                  "Required to run as daemon"
 config_entry "vt"                 "4"                                   "Virtual terminal to use for display (0 to use current)"
