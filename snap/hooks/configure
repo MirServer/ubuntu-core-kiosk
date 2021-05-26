@@ -63,9 +63,9 @@ EOT
 fi
 
 
-if [ -e "$SNAP/graphics/lib/mir-quirks" ]
+if [ -f "$SNAP/graphics/etc/mir-quirks" ]
 then
-  cat "$SNAP/graphics/lib/mir-quirks" >> "${config_temp}"
+  cat "$SNAP/graphics/etc/mir-quirks" >> "${config_temp}"
 fi
 
 # Fill in defaults for any options not already supplied
