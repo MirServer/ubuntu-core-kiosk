@@ -3,16 +3,16 @@
 This is a quick introduction to running Ubuntu Core Kiosk in a virtual machine.
 
 ## Setup a VM
-Firstly we need to be able to run the VM and as the default build of qemu on Ubuntu doesn’t support graphics we will use a handy snap that enables this:
+We need to be able to run the VM and, as the default build of qemu on Ubuntu doesn’t support graphics, we will use a handy snap that enables this:
 
     $ sudo snap install qemu-virgil
     $ sudo snap connect qemu-virgil:kvm
 
-First, we’ll download an Ubuntu Core image. It’s currently easiest to get core18 working (as core20 requires UEFI and our qemu backend doesn't support UEFI booting). On an x86 computer download the `ubuntu-core-18-amd64.img.xz` image from here:
+We also download an Ubuntu Core image. It’s currently easiest to get core18 working (as core20 requires UEFI and our qemu backend doesn't support UEFI booting). On an x86 computer download the `ubuntu-core-18-amd64.img.xz` image from here:
 
 [https://cdimage.ubuntu.com/ubuntu-core/18/stable/current/](https://cdimage.ubuntu.com/ubuntu-core/18/stable/current/)
 
-Next, uncompress the image and move it to a convenient location:
+Now, uncompress the image and move it to a convenient location:
 
     $ unxz ~/Downloads/ubuntu-core-18-amd64.img.xz
     $ mv ~/Downloads/ubuntu-core-18-amd64.img ~/snap/qemu-virgil/common/
@@ -23,7 +23,7 @@ Next, uncompress the image and move it to a convenient location:
 
 This will create a QEMU window on your desktop and you need to follow through the prompts to initialise the VM with your launchpad account. (If you don’t have a launchpad account, get one and set up a public SSH key.)
 
-Connect to the VP using ssh from a terminal window:
+Connect to the VP using ssh from a terminal window (ignore the address shown in the QEMU window and use the port set in the above command):
 
     $ ssh -P 10022 <your‑user>@localhost
 

@@ -289,3 +289,7 @@ The following tutorials for building kiosk snaps currently refer to `mir-kiosk` 
 * [Make a Wayland-native Kiosk snap](https://ubuntu.com/tutorials/wayland-kiosk)
 * [Make a X11-based Kiosk Snap](https://ubuntu.com/tutorials/x11-kiosk)
 * [Make a HTML5/Electron-based Kiosk Snap](https://ubuntu.com/tutorials/electron-kiosk)
+
+Similarly, the following article describes some useful debugging techniques that can be applied when using `ubuntu-core-kiosk` as well as `mir-kiosk`.
+
+* [Debugging Graphical Apps on Ubuntu Core](https://forum.snapcraft.io/t/debugging-graphical-apps-on-ubuntu-core/23671)
