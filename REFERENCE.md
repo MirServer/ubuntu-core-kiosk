@@ -2,15 +2,13 @@
 
 ## Overview
 
-The `ubuntu-core-kiosk` snap provides the foundation for any graphical kiosk implementation. It provides a shell handling multiple displays, touch, mouse and keyboard input, letting you run any application you want, instantly turning it into a kiosk application.
+The `ubuntu-core-kiosk` snap provides the foundation for any graphical kiosk implementation. It provides a shell handling multiple displays, touch, mouse and keyboard input, letting you run any application you want, instantly turning it into a kiosk application. Although primarily intended for use on Ubuntu Core it can be used on Classic linux systems and even run as an application within a traditional desktop environment.
 
 There are three snap configuration options:
 
-* `daemon=[true|false]` enables the daemon (defaults to false on classic systems)
+* `daemon=[true|false]` enables the daemon (defaults to true on Ubuntu Core and false on classic systems)
 * `kiosk-config=<contents for ubuntu_core_kiosk.config>`
 * `kiosk-display=<contents for ubuntu_core_kiosk.display>`
-
-Although primarily intended for use on Ubuntu Core it can be used on Classic linux systems and even run as an application within a traditional desktop environment.
 
 ## The snap configuration options
 
