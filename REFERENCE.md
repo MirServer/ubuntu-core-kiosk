@@ -16,7 +16,7 @@ There are three snap configuration options:
 
 This controls the `ubuntu-core-kiosk.daemon` process. If `daemon=true` then the daemon runs and *takes control of the display on your computer*, otherwise the daemon is disabled.
 
-On a default installation `daemon` is only set to `true` on Ubuntu Core systems. But can be set to `true` either manually or from a gadget snap.  
+On a default installation `daemon` is only set to `true` on Ubuntu Core systems. But can be set to `true` either manually or from a gadget snap.
 
 You can see the value of this using the following command:
 
@@ -31,7 +31,7 @@ $ snap set ubuntu-core-kiosk daemon=true
 
 ### The `kiosk-config` snap configuration option
 
-This provides a way to modify the kiosk configuration file. The default file looks like this:
+This provides a way to modify the kiosk configuration file. Every time the option is set the provided config is merged with the default config and written to the file. The default file looks like this:
 
 ```bash
 $ cat /var/snap/ubuntu-core-kiosk/current/ubuntu_core_kiosk.config 
