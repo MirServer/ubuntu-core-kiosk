@@ -74,7 +74,7 @@ add-wayland-extensions=zwp_pointer_constraints_v1:zwp_relative_pointer_manager_v
 
 A full list of the current configuration options supported by `ubuntu-core-kiosk` can be obtained by `--help`:
 
-```bash
+```
 $ ubuntu-core-kiosk --help
 usage: /snap/ubuntu-core-kiosk/117/usr/local/bin/ubuntu_core_kiosk [options]
 
@@ -211,7 +211,7 @@ One of the options in `kiosk-config` is:
 ```
 
 The contents of this file describe the graphics cards and outputs on the system and, as such, vary between systems. You can get a template for your system by running `ubuntu-core-kiosk` and checking for an `ubuntu_core_kiosk.display` file. For example:
-```bash
+```yaml
 $ cat /var/snap/ubuntu-core-kiosk/current/ubuntu_core_kiosk.display
 layouts:
 # keys here are layout labels (used for atomically switching between them)
@@ -239,7 +239,7 @@ layouts:
 
 For an inverted display on this system, you would use:
 
-```bash
+```yaml
 $ snap set ubuntu-core-kiosk kiosk-display="
 layouts:
   default:
